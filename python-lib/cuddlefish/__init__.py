@@ -16,7 +16,7 @@ on your system. Please specify one using the -b/--binary option.
 """
 
 UPDATE_RDF_FILENAME = "%s.update.rdf"
-XPI_FILENAME = "%s.xpi"
+XPI_FILENAME = "%s-%s.xpi"
 
 usage = """
 %prog [options] command [command-specific options]
@@ -757,7 +757,7 @@ def run(arguments=sys.argv[1:], target_cfg=None, pkg_cfg=None,
         if not options.strip_xpi:
             used_files = None # disables the filter
 
-        xpi_name = XPI_FILENAME % target_cfg.name
+        xpi_name = XPI_FILENAME % ( target_cfg.name, target_cfg.version )
         print "Exporting extension to %s." % xpi_name
         build_xpi(template_root_dir=app_extension_dir,
                   manifest=manifest_rdf,

@@ -113,8 +113,8 @@ set PYTHONINSTALL=%PYTHONINSTALL:REG_SZ=%
 rem Remove tabs (note the literal \t in the next line
 set PYTHONINSTALL=%PYTHONINSTALL:	=%
 rem Remove spaces.
-set PYTHONINSTALL=%PYTHONINSTALL: =%
-if exist %PYTHONINSTALL%\python.exe goto :EOF
+set PYTHONINSTALL=%PYTHONINSTALL:  =%
+if exist "%PYTHONINSTALL%\python.exe" goto :EOF
 rem It may be a 32bit Python directory built from source, in which case the
 rem executable is in the PCBuild directory.
 if exist %PYTHONINSTALL%\PCBuild\python.exe (set "PYTHONINSTALL=%PYTHONINSTALL%\PCBuild" & goto :EOF)
@@ -125,8 +125,8 @@ rem And try HKCU
 FOR /F "usebackq tokens=2 delims=)>" %%A IN (`%reg% QUERY HKCU\%key% /ve 2^>NUL`) DO SET "%~1=%%A"
 set PYTHONINSTALL=%PYTHONINSTALL:REG_SZ=%
 set PYTHONINSTALL=%PYTHONINSTALL:	=%
-set PYTHONINSTALL=%PYTHONINSTALL: =%
-if exist %PYTHONINSTALL%\python.exe goto :EOF
+set PYTHONINSTALL=%PYTHONINSTALL:  =%
+if exist "%PYTHONINSTALL%\python.exe" goto :EOF
 if exist %PYTHONINSTALL%\PCBuild\python.exe (set "PYTHONINSTALL=%PYTHONINSTALL%\PCBuild" & goto :EOF)
 if exist %PYTHONINSTALL%\PCBuild\amd64\python.exe (set "PYTHONINSTALL=%PYTHONINSTALL%\PCBuild\amd64" & goto :EOF)
 rem can't find it here, so arrange to try the next key

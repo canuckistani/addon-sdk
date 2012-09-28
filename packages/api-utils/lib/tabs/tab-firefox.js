@@ -32,6 +32,7 @@ const TabTrait = Trait.compose(EventEmitter, {
   constructor: function Tab(options) {
     this._onReady = this._onReady.bind(this);
     this._tab = options.tab;
+
     let window = this.window = options.window || getOwnerWindow(this._tab);
 
     // Setting event listener if was passed.
@@ -93,6 +94,11 @@ const TabTrait = Trait.compose(EventEmitter, {
    * Window object of the page that is currently loaded in this tab.
    */
   get _contentWindow() this._browser.contentWindow,
+
+  /**
+   * Unique id for the tab, actually maps to tab.linkedPanel but with some munging.
+   */
+  get id() getTabId(this._tab),
 
   /**
    * The title of the page currently loaded in the tab.

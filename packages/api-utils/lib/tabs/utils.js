@@ -131,6 +131,12 @@ function getBrowserForTab(tab) {
 }
 exports.getBrowserForTab = getBrowserForTab;
 
+function getTabId(tab) {
+  // linkedPanel looks like: panel12345678, we just want the 
+  return String.split(tab.linkedPanel, 'panel').pop();
+}
+exports.getTabId = getTabId;
+
 function getTabTitle(tab) {
   return getBrowserForTab(tab).contentDocument.title || tab.label || "";
 }

@@ -8,7 +8,7 @@ const { Class } = require('../heritage');
 const { tabNS } = require('./namespace');
 const { EventTarget } = require('../event/target');
 const { activateTab, getTabTitle, setTabTitle, closeTab, getTabURL,
-        setTabURL, getOwnerWindow } = require('./utils');
+        setTabURL, getOwnerWindow, getTabId } = require('./utils');
 const { emit } = require('../event/core');
 const { when: unload } = require('../unload');
 
@@ -61,6 +61,10 @@ const Tab = Class({
 
     // return 80x45 blank default
     return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAtCAYAAAA5reyyAAAAJElEQVRoge3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAADXBjhtAAGQ0AF/AAAAAElFTkSuQmCC';
+  },
+
+  get id() {
+    return getTabId(tabNS(this).tab);
   },
 
   /**

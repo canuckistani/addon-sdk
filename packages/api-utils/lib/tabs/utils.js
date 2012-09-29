@@ -132,7 +132,9 @@ function getBrowserForTab(tab) {
 exports.getBrowserForTab = getBrowserForTab;
 
 function getTabId(tab) {
-  // linkedPanel looks like: panel12345678, we just want the 
+  if (tab.browser) // fennec
+    return tab.id
+
   return String.split(tab.linkedPanel, 'panel').pop();
 }
 exports.getTabId = getTabId;

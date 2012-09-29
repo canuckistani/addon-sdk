@@ -10,7 +10,7 @@ const { EVENTS } = require("./events");
 const { getThumbnailURIForWindow } = require("../utils/thumbnail");
 const { getFaviconURIForLocation } = require("../utils/data");
 const { activateTab, getOwnerWindow, getBrowserForTab, getTabTitle, setTabTitle,
-        getTabURL, setTabURL } = require('./utils');
+        getTabURL, setTabURL, getTabId } = require('./utils');
 
 // Array of the inner instances of all the wrapped tabs.
 const TABS = [];
